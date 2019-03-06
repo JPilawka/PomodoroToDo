@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <ul class="list-group">
       <li v-for="(item, index) in todolist" :class="classChanger(index)">
         <div class="title">
@@ -24,9 +23,6 @@ export default{
     return{
       todolist: this.$store.state.todolist,
     }
-  },
-  created: function(){
-
   },
   methods:{
     classChanger(index){

@@ -1,5 +1,6 @@
 <template>
   <div class="editor alert alert-light">
+
     <form>
     <ul class="list-group">
       <div class="row">
@@ -10,7 +11,7 @@
           Time
         </label>
         <label for="description"  class="col-7">
-          description
+          Description
         </label>
       </div>
       <li v-for="(item, index) in todolist" class="list-group-item list-group-item-dark">
@@ -40,11 +41,11 @@
           <label for="name" class="col-3">
             Title
           </label>
-          <label for="timespan" class="col-3">
+          <label for="timespan" class="col-1">
             Time
           </label>
           <label for="description"  class="col-7">
-            description
+            Description
           </label>
         </div>
         <div class="row">
