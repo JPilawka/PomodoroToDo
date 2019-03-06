@@ -4,8 +4,8 @@
     <div class="buttons">
       <span>
         <button> << </button>
-        <button v-if="!isStarted"@click="startTimer()"> > </button>
-        <button v-if="isStarted"@click="stopTimer()"> || </button>
+        <button v-if="!isStarted" @click="startTimer()"> > </button>
+        <button v-if="isStarted" @click="stopTimer()"> || </button>
         <button @click="nextItem()"> >> </button>
       </span>
     </div>
@@ -48,10 +48,6 @@ export default{
         this.timer = setInterval(() => this.countdown(), 1000);
         this.isStarted=true;
       }
-      if(this.isPaused){
-        console.log("teoretycznie pauza");
-      }
-      console.log("odliczanie zaczete: "+this.seconds);
     },
     stopTimer(){
       clearInterval(this.timer);
@@ -65,7 +61,6 @@ export default{
         this.stopTimer();
         var a = new Audio(this.audio);
         a.play();
-        console.log("kolejny item");
         this.isStarted = false;
         this.startTimer();
       }

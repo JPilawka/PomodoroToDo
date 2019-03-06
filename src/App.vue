@@ -13,7 +13,6 @@
         let ttime=0;
         for(let i=0; i<this.$store.state.todolist.length; i++){
           ttime+=this.$store.state.todolist[i].timespan*1;
-          console.log(ttime);
         }
         let hours = Math.floor(ttime / 60);
         let mins = ttime%60;
