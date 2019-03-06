@@ -1,0 +1,17 @@
+[
+  {
+      "name":"worktime",
+      "timespan":"25",
+      "description":"simplest work time"
+  },
+  {
+    "name":"break",
+    "timespan":"5",
+    "description":"simplest break"
+  },
+  {
+    "name":"javascript",
+    "timespan":"25",
+    "description":"simplest break"
+  }
+]

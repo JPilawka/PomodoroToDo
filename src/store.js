@@ -5,12 +5,19 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-
+    currentListItem: 0,
+    maxItemsInList:0,
+    currentMaxTime: 0
   },
   mutations: {
 
   },
   actions: {
-
+    setMaxIndex(value){
+      this.maxItemsInList = value;
+    },
+    setMaxTime(time){
+      this.currentMaxTime = time * 60;
+    }
   }
 })

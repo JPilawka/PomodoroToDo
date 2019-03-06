@@ -1,9 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <img src="./assets/logo.png" class="menuEl"><h3 class="menuEl">Pomodoro ToDo</h3>
     <router-view/>
   </div>
 </template>
@@ -15,17 +12,10 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  padding-top:20px;
 }
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+h3 {
+  padding: 5px;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
