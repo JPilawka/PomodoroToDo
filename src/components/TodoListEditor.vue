@@ -17,9 +17,9 @@
       <li v-for="(item, index) in todolist" class="list-group-item list-group-item-dark">
         <div class="title form-group">
           <div class="row">
-            <input class="form-control col-3" type="text" v-model="item.name">
-            <input class="form-control col-1" type="text" max="50" v-model="item.timespan">
-            <textarea class="form-control col-6" v-model="item.description"></textarea>
+            <input class="form-control col-12 col-sm-3" type="text" v-model="item.name">
+            <input class="form-control col-12 col-sm-1" type="text" max="50" v-model="item.timespan">
+            <textarea class="form-control col-10 col-sm-6" v-model="item.description"></textarea>
             <button class="deleteButton" @click.prevent="deleteItem(index)"> x </button>
           </div>
         </div>
@@ -28,7 +28,6 @@
   </form>
   <div class="option-container">
     <button v-if="!showNewItem" @click.prevent="showAddNewItemForm()" class="btn btn-success option-button">Add new Item</button>
-    <button v-if="showNewItem" @click.prevent="addNewItemForm()" class="btn btn-success option-button">Add</button>
 
   </div>
   <form>
@@ -47,10 +46,11 @@
           </label>
         </div>
         <div class="row">
-          <input class="form-control col-3" type="text" v-model="newName">
-          <input class="form-control col-1" type="text" max="50" v-model="newTimespan">
-          <textarea class="form-control col-7" v-model="newDescription"></textarea>
+          <input class="form-control col-12 col-sm-3" type="text" v-model="newName">
+          <input class="form-control col-12 col-sm-1" type="text" max="50" v-model="newTimespan">
+          <textarea class="form-control col-10 col-sm-7" v-model="newDescription"></textarea>
         </div>
+        <button v-if="showNewItem" @click.prevent="addNewItemForm()" class="btn btn-success option-button">Add</button>
 
 
       </div>
