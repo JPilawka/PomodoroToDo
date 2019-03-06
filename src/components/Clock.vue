@@ -120,7 +120,7 @@ export default{
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  padding-top: 18%;
+  padding-top: 55px;
   margin: auto;
   color: Crimson;
 }

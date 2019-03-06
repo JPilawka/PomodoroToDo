@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" class="menuEl"><h3 class="menuEl">Pomodoro ToDo</h3>
+    <img src="./assets/logo_short.png" class="menuEl"><h3 class="menuEl">Pomodoro ToDo</h3>
     <h5>Total time: {{totalWorkTime}} </h5>
     <router-view/>
   </div>

@@ -20,7 +20,7 @@
             <input class="form-control col-12 col-sm-3" type="text" v-model="item.name">
             <input class="form-control col-12 col-sm-1" type="text" max="50" v-model="item.timespan">
             <textarea class="form-control col-10 col-sm-6" v-model="item.description"></textarea>
-            <button class="deleteButton" @click.prevent="deleteItem(index)"> x </button>
+            <button class="deleteButton" @click.prevent="deleteItem(index)"> X </button>
           </div>
         </div>
       </li>
@@ -149,13 +149,12 @@ label{
   font-weight: bold;
 }
 .deleteButton{
-  border: none;
-  background-color: #dc3545;
+  background-color: #ff5050;
   color: white;
-  height: 25px;
+  height: 24px;
   width: 25px;
   font-weight: bold;
   border-radius: 5px;
-
+  border: none;
 }
 </style>
