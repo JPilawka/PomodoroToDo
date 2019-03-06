@@ -6,10 +6,10 @@
         <label for="name" class="col-3">
           Title
         </label>
-        <label for="timespan" class="col-3">
+        <label for="timespan" class="col-1">
           Time
         </label>
-        <label for="description"  class="col-3">
+        <label for="description"  class="col-7">
           description
         </label>
       </div>
@@ -18,21 +18,19 @@
 
           <div class="row">
             <input class="form-control col-3" type="text" v-model="item.name">
-            <input class="form-control col-3" type="text" v-model="item.timespan">
-            <textarea class="form-control col-5" v-model="item.description"></textarea>
+            <input class="form-control col-1" type="text" max="50" v-model="item.timespan">
+            <textarea class="form-control col-7" v-model="item.description"></textarea>
           </div>
 
 
         </div>
       </li>
     </ul>
-    <!--<button @click.prevent="" class="list-group-item list-group-item-success center">SAVE</button>-->
   </form>
   <div class="option-container">
-    <button v-if="!showNewItem" @click.prevent="showAddNewItemForm()" class="list-group-item list-group-item-success option-button">Add new Item</button>
-    <button v-if="showNewItem" @click.prevent="addNewItemForm()" class="list-group-item list-group-item-success option-button">Add new Item</button>
+    <button v-if="!showNewItem" @click.prevent="showAddNewItemForm()" class="btn btn-success option-button">Add new Item</button>
+    <button v-if="showNewItem" @click.prevent="addNewItemForm()" class="btn btn-success option-button">Add</button>
 
-    <button @click.prevent="reset()" class="list-group-item list-group-item-danger option-button">Reset list</button>
   </div>
   <form>
   <ul class="list-group" v-if="showNewItem">
@@ -45,14 +43,14 @@
           <label for="timespan" class="col-3">
             Time
           </label>
-          <label for="description"  class="col-3">
+          <label for="description"  class="col-7">
             description
           </label>
         </div>
         <div class="row">
           <input class="form-control col-3" type="text" v-model="newName">
-          <input class="form-control col-3" type="text" v-model="newTimespan">
-          <textarea class="form-control col-5" v-model="newDescription"></textarea>
+          <input class="form-control col-1" type="text" max="50" v-model="newTimespan">
+          <textarea class="form-control col-7" v-model="newDescription"></textarea>
         </div>
 
 
@@ -63,14 +61,12 @@
 </template>
 
 <script>
-import todolist from '@/assets/todolist_custom.json'
-import axios from 'axios'
 
 export default{
   name: 'TodoListEditor',
   data(){
     return{
-      todolist: todolist,
+      todolist: this.$store.state.todolist,
       showNewItem: false,
       newName: '',
       newTimespan: 25,
@@ -81,8 +77,10 @@ export default{
   methods:{
     showAddNewItemForm(){
       this.showNewItem=true;
+      this.checkNewItemProps();
     },
     addNewItemForm(){
+
       this.todolist.push({
         name: this.newName,
         timespan: this.newTimespan,
@@ -90,31 +88,20 @@ export default{
 
       });
 
-      this.$store.state.maxItemsInList=this.todolist.default.length;
-      //console.log(this.todolist);
-      let axiosParams ={
-        url: 'http://localhost:8080/todolist.json',
-        headers: {
-          'Content-Type': 'application/json;charset=UTF-8',
-          "Access-Control-Allow-Origin": "*",
-        }
-      };
-      //axios.get('/todolist.json').then((response)=>{console.log(response.data)});
-      axios.post('http://localhost:8080/todolist.json',
-        this.todolist,{
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          "Access-Control-Allow-Origin": "*",
-        }
-      }).then((response)=>{
-        console.log(response);
-      }).catch((error)=>{
-        console.log(error);
-      });
+      this.$store.state.maxItemsInList=this.todolist.length;
+
+      this.checkNewItemProps();
+
     },
-    reset(){
-      //copy default to custom
+    checkNewItemProps(){
+      if(this.todolist.length%2==0){
+        this.newName = "Work Item";
+        this.newTimespan = 25;
+      }
+      else{
+        this.newName = "Break";
+        this.newTimespan = 5;
+      }
     }
   }
 }
@@ -155,5 +142,7 @@ label{
   display: flex;
   margin-bottom: 10px;
 }
-
+.btn{
+  font-weight: bold;
+}
 </style>

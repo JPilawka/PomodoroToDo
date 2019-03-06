@@ -15,14 +15,14 @@
 </template>
 
 <script>
-import todolist from '@/assets/todolist_custom.json'
+
 
 export default{
   name: 'TodoList',
   props: ['config'],
   data(){
     return{
-      todolist: todolist,
+      todolist: this.$store.state.todolist,
     }
   },
   created: function(){

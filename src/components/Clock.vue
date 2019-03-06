@@ -31,7 +31,7 @@ export default{
   },
   created(){
     this.$store.state.maxItemsInList = todolist.length;
-    this.setMaxTime(todolist[0].timespan);
+    this.setMaxTime(this.todolist[0].timespan);
   },
   methods:{
     nextItem (){
@@ -41,7 +41,7 @@ export default{
       if(this.$store.state.currentListItem>=this.$store.state.maxItemsInList){
         this.$store.state.currentListItem=0;
       }
-      this.setMaxTime(todolist[this.$store.state.currentListItem].timespan)
+      this.setMaxTime(this.todolist[this.$store.state.currentListItem].timespan)
     },
     startTimer (){
       if(!this.isPause){
