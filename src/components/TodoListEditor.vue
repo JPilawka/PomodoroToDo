@@ -16,14 +16,12 @@
       </div>
       <li v-for="(item, index) in todolist" class="list-group-item list-group-item-dark">
         <div class="title form-group">
-
           <div class="row">
             <input class="form-control col-3" type="text" v-model="item.name">
             <input class="form-control col-1" type="text" max="50" v-model="item.timespan">
-            <textarea class="form-control col-7" v-model="item.description"></textarea>
+            <textarea class="form-control col-6" v-model="item.description"></textarea>
+            <button class="deleteButton" @click.prevent="deleteItem(index)"> x </button>
           </div>
-
-
         </div>
       </li>
     </ul>
@@ -94,6 +92,10 @@ export default{
       this.checkNewItemProps();
 
     },
+    deleteItem(index){
+      console.log(index);
+      this.$store.state.todolist.splice(index,1);
+    },
     checkNewItemProps(){
       if(this.todolist.length%2==0){
         this.newName = "Work Item";
@@ -145,5 +147,15 @@ label{
 }
 .btn{
   font-weight: bold;
+}
+.deleteButton{
+  border: none;
+  background-color: #dc3545;
+  color: white;
+  height: 25px;
+  width: 25px;
+  font-weight: bold;
+  border-radius: 5px;
+
 }
 </style>

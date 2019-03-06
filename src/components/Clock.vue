@@ -3,11 +3,32 @@
     <div class="clock">{{minutes}}:{{seconds}}</div>
     <div class="buttons">
       <span>
-        <button> << </button>
-        <button v-if="!isStarted" @click="startTimer()"> > </button>
-        <button v-if="isStarted" @click="stopTimer()"> || </button>
-        <button @click="nextItem()"> >> </button>
+        <button
+          @click="resetTimer()"
+          title="Reset"
+          @mouseover="tooltipHandler('Reset')"
+          @mouseout="tooltipReset()"> @ </button>
+        <button
+          v-if="!isStarted"
+          @click="startTimer()"
+          title="Start"
+          @mouseover="tooltipHandler('Start')"
+          @mouseout="tooltipReset()"> > </button>
+        <button
+          v-if="isStarted"
+          @click="stopTimer()"
+          title="Stop"
+          @mouseover="tooltipHandler('Stop')"
+          @mouseout="tooltipReset()"> || </button>
+        <button
+          @click="nextItem()"
+          title="Next"
+          @mouseover="tooltipHandler('Next')"
+          @mouseout="tooltipReset()"> >> </button>
       </span>
+      <div class="ttip">
+        {{tooltip}}
+      </div>
     </div>
   </div>
 </template>
@@ -26,7 +47,8 @@ export default{
       todolist: todolist,
       audio: audio,
       timer: 0,
-      totalTime: 0 //trzeba wstawić czas
+      totalTime: 0, //trzeba wstawić czas
+      tooltip: ''
     }
   },
   created(){
@@ -67,6 +89,15 @@ export default{
     },
     setMaxTime(time){
       this.totalTime = time *60;
+    },
+    resetTimer(){
+      this.totalTime = this.todolist[this.$store.state.currentListItem].timespan*60;
+    },
+    tooltipHandler(tooltip){
+      this.tooltip = tooltip;
+    },
+    tooltipReset(){
+      this.tooltip=' ';
     }
   },
   computed:{
@@ -94,7 +125,7 @@ export default{
   color: Crimson;
 }
 .buttons{
-  margin-top: 20px;
+  margin-top: 10px;
 }
 .buttons button {
   color: Crimson;
@@ -103,5 +134,9 @@ export default{
   border: 1px solid Crimson;
   margin: 2px;
   width: 40px;
+}
+.ttip{
+  min-height: 25px;
+  color: Crimson;
 }
 </style>

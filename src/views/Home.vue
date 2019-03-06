@@ -50,13 +50,9 @@ export default {
 </script>
 
 <style>
-.editor{
-
-}
 .row {
   margin: 5px;
   padding: 5px;
-
 }
 .editorButton{
   background-color: none;
@@ -67,5 +63,8 @@ export default {
 }
 #arrowDown{
   display: inline-block;
+}
+.col-12{
+  margin-top: 7px;
 }
 </style>
