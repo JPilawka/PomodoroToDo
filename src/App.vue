@@ -1,23 +1,20 @@
 <template>
   <div id="app">
     <img src="./assets/logo_short.png" class="menuEl"><h3 class="menuEl">Pomodoro ToDo</h3>
-    <h5>Total time: {{totalWorkTime}} </h5>
+
     <router-view/>
   </div>
 </template>
 
 <script>
   export default{
-    computed:{
-      totalWorkTime(){
-        let ttime=0;
-        for(let i=0; i<this.$store.state.todolist.length; i++){
-          ttime+=this.$store.state.todolist[i].timespan*1;
-        }
-        let hours = Math.floor(ttime / 60);
-        let mins = ttime%60;
-        return hours+' h '+mins+ ' mins';
+    created(){
+      this.$store.state.todolist = JSON.parse(localStorage.getItem('todolist'));
+      if(this.$store.state.todolist==null){
+        localStorage.setItem('todolist',JSON.stringify([]));
+        this.$store.state.todolist=[];
       }
+      //localStorage.setItem('todolist',JSON.stringify(this.$store.state.todolist));
     }
   }
 </script>

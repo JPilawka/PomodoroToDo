@@ -9,7 +9,7 @@ export default new Vuex.Store({
     currentListItem: 0,
     maxItemsInList:0,
     currentMaxTime: 0,
-    todolist: todolist
+    todolist: []
   },
   mutations: {
 

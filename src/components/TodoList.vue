@@ -1,12 +1,16 @@
 <template>
   <div>
+    <h6>Total time: {{totalWorkTime}} </h6>
     <ul class="list-group">
+      <span class="moreInfo" @click="showDesc(index)" v-if="!show">Show more</span>
+      <span class="moreInfo" @click="showDesc(index)" v-if="show">Hide less</span>
       <li v-for="(item, index) in todolist" :class="classChanger(index)">
         <div class="title">
           <span>{{item.name}}</span>
           <span><img src="@/assets/clock_icon.png"> {{item.timespan}} min.</span>
         </div>
-        {{item.description}}
+        <div v-if="show">{{item.description}}
+        </div>
       </li>
     </ul>
 
@@ -21,7 +25,25 @@ export default{
   props: ['config'],
   data(){
     return{
-      todolist: this.$store.state.todolist,
+      show: false
+    }
+  },
+  computed:{
+    totalWorkTime(){
+      if(this.$store.state.todolist!=null){
+        let ttime=0;
+        for(let i=0; i<this.$store.state.todolist.length; i++){
+          ttime+=this.$store.state.todolist[i].timespan*1;
+        }
+        let hours = Math.floor(ttime / 60);
+        let mins = ttime%60;
+        return hours+' h '+mins+ ' mins';
+      }
+
+    },
+    todolist(){
+      this.$store.state.todolist = JSON.parse(localStorage.getItem('todolist'));
+      return this.$store.state.todolist;
     }
   },
   methods:{
@@ -40,6 +62,9 @@ export default{
 
       }
       return c;
+    },
+    showDesc(index){
+      this.show=!this.show;
     }
   }
 }
@@ -65,5 +90,10 @@ export default{
 }
 .list-group-item-danger{
   background-color: #F5EFEF;
+}
+.moreInfo{
+  font-weight: 100;
+  display: flex;
+  justify-content: space-between;
 }
 </style>

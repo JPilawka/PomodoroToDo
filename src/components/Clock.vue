@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import todolist from '@/assets/todolist_custom.json'
+
 import audio from '@/assets/sound.mp3'
 
 export default{
@@ -43,8 +43,8 @@ export default{
   data(){
     return{
       isStarted: false,
+      itStarted: false,
       isPaused: false,
-      todolist: todolist,
       audio: audio,
       timer: 0,
       totalTime: 0, //trzeba wstawić czas
@@ -52,8 +52,11 @@ export default{
     }
   },
   created(){
-    this.$store.state.maxItemsInList = todolist.length;
-    this.setMaxTime(this.todolist[0].timespan);
+    this.$store.state.maxItemsInList = this.todolist.length;
+    if(this.$store.state.todolist!=null){
+      this.setMaxTime(this.$store.state.todolist[0].timespan);
+    }
+
   },
   methods:{
     nextItem (){
@@ -66,6 +69,7 @@ export default{
       this.setMaxTime(this.todolist[this.$store.state.currentListItem].timespan)
     },
     startTimer (){
+      this.setMaxTime(this.todolist[this.$store.state.currentListItem].timespan)
       if(!this.isPause){
         this.timer = setInterval(() => this.countdown(), 1000);
         this.isStarted=true;
@@ -107,6 +111,13 @@ export default{
     seconds(){
       const seconds = this.totalTime - this.minutes*60;
       return (seconds < 10 ? '0' : '') + seconds;
+    },
+    todolist(){
+      //console.log(this.$store.state.todolist);
+      if(this.$store.state.todolist!=null){
+        return this.$store.state.todolist;
+      }
+
     }
   }
 }
