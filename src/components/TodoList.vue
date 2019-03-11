@@ -2,8 +2,8 @@
   <div>
     <h6>Total time: {{totalWorkTime}} </h6>
     <ul class="list-group">
-      <span class="moreInfo" @click="showDesc(index)" v-if="!show">Show more</span>
-      <span class="moreInfo" @click="showDesc(index)" v-if="show">Hide less</span>
+      <span class="moreInfo" @click="showDesc()" v-if="!show">Show more</span>
+      <span class="moreInfo" @click="showDesc()" v-if="show">Show less</span>
       <li v-for="(item, index) in todolist" :class="classChanger(index)">
         <div class="title">
           <span>{{item.name}}</span>
@@ -22,7 +22,6 @@
 
 export default{
   name: 'TodoList',
-  props: ['config'],
   data(){
     return{
       show: false
@@ -63,7 +62,7 @@ export default{
       }
       return c;
     },
-    showDesc(index){
+    showDesc(){
       this.show=!this.show;
     }
   }

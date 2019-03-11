@@ -39,7 +39,6 @@ import audio from '@/assets/sound.mp3'
 
 export default{
   name: 'Clock',
-  props: ['config'],
   data(){
     return{
       isStarted: false,
@@ -114,10 +113,11 @@ export default{
     },
     todolist(){
       //console.log(this.$store.state.todolist);
+      let tdl = [];
       if(this.$store.state.todolist!=null){
-        return this.$store.state.todolist;
+        tdl = this.$store.state.todolist;
       }
-
+      return tdl;
     }
   }
 }

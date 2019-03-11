@@ -15,7 +15,7 @@
           Description
         </label>
       </div>
-      <li v-for="(item, index) in todolist" class="list-group-item list-group-item-dark">
+      <li v-for="(item, index) in todolist" :key="index" class="list-group-item list-group-item-dark">
         <div class="title form-group">
           <div class="row">
             <input class="form-control col-12 col-sm-3" type="text" v-model="item.name" @change="update()">
@@ -70,10 +70,11 @@ export default{
   },
   computed:{
     todolist() {
+      let tdl=[];
       if(this.$store.state.todolist!=null){
-        return this.$store.state.todolist
+        tdl = this.$store.state.todolist
       }
-
+      return tdl;
     }
   },
   methods:{

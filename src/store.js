@@ -10,16 +10,5 @@ export default new Vuex.Store({
     maxItemsInList:0,
     currentMaxTime: 0,
     todolist: []
-  },
-  mutations: {
-
-  },
-  actions: {
-    setMaxIndex(value){
-      this.maxItemsInList = value;
-    },
-    setMaxTime(time){
-      this.currentMaxTime = time * 60;
-    }
   }
 })
