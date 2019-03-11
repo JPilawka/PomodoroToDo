@@ -35,9 +35,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # Usage
 
 ## Editor.
-At te beginning to do list is empty. You can add element simply by clicking on "Show Editor" button:
-
-![showeditor.jpg](https://github.com/JPilawka/PomodoroToDo/blob/master/src/assets/gitimages/showeditor.jpg)
+At te beginning to do list is empty. You can add element simply by clicking on "Show Editor" button: ![showeditor.jpg](https://github.com/JPilawka/PomodoroToDo/blob/master/src/assets/gitimages/showeditor.jpg),
 
 editing name, time and description and clicking "Add new item":
 
@@ -51,7 +49,7 @@ You can edit them as you need and delete elements with "X" on the right.
 You can also reset whole list to fresh one by clicking red button "Reset list"
 
 ## ToDo List
-Each time element is edited or added klist of all elements will be updated in Todo List module:
+Each time element is edited or added, list of all elements will be updated in Todo List module:
 
 ![list.jpg](https://github.com/JPilawka/PomodoroToDo/blob/master/src/assets/gitimages/list.jpg)
 
