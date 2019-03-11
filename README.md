@@ -35,7 +35,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 # Usage
 
 ## Editor.
-At te beginning to do list is empty. You can add element simply by clicking on "Show Editor" button: ![showeditor.jpg](https://github.com/JPilawka/PomodoroToDo/blob/master/src/assets/gitimages/showeditor.jpg),
+At the beginning to do list is empty. You can add element simply by clicking on "Show Editor" button: ![showeditor.jpg](https://github.com/JPilawka/PomodoroToDo/blob/master/src/assets/gitimages/showeditor.jpg),
 
 editing name, time and description and clicking "Add new item":
 
